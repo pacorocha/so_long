@@ -8,6 +8,13 @@ typedef struct	s_data {
 	int		endian;
 }				t_data;
 
+static int	closew(t_my_mlx *my_mlx)
+{
+	mlx_destroy_window(my_mlx->mlx, my_mlx->mlx_win);
+	exit(0);
+	return (0);
+}
+
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
@@ -44,7 +51,7 @@ int	main(void)
 	img.img = mlx_new_image(my_mlx.mlx, 1920, 1080);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 								&img.endian);
-
 	draw_square(img, &my_mlx);
+	mlx_hook(my_mlx.mlx_win, 33, 1L << 17, closew, &my_mlx);
 	mlx_loop(my_mlx.mlx);
 }
