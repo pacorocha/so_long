@@ -37,6 +37,15 @@ void	draw_square(t_data img, t_my_mlx *my_mlx) {
 		my_mlx_pixel_put(&img, a, b+i, 0x00FF0000);
 		i--;
 	}
+	a = 25;
+	b = 25;
+	i = 50;
+	while (i > 25)
+	{
+		my_mlx_pixel_put(&img, a+i-(b*2), b, 0x00FF0000);
+		my_mlx_pixel_put(&img, a, b+i-(a*2), 0x00FF0000);
+		i--;
+	}
 	mlx_put_image_to_window(my_mlx->mlx, my_mlx->mlx_win, img.img, 15, 20);
 }
 
