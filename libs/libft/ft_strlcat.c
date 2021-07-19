@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/14 20:57:43 by jfrancis          #+#    #+#             */
-/*   Updated: 2021/02/17 22:34:44 by jfrancis         ###   ########.fr       */
+/*   Updated: 2021/05/15 23:27:17 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	size_t dst_len;
+	size_t	dst_len;
 
 	dst_len = ft_strlen(dst);
 	if (size <= dst_len)

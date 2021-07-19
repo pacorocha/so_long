@@ -1,31 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   be_positive.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/16 12:13:09 by jfrancis          #+#    #+#             */
-/*   Updated: 2021/05/15 22:23:36 by jfrancis         ###   ########.fr       */
+/*   Created: 2021/03/19 19:09:51 by jfrancis          #+#    #+#             */
+/*   Updated: 2021/06/06 17:47:57 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+long int	be_positive(long int n)
 {
-	unsigned char	*a;
-	unsigned char	*b;
-
-	a = (unsigned char *)s1;
-	b = (unsigned char *)s2;
-	while (n > 0)
-	{
-		if (*a != *b)
-			return (*a - *b);
-		n--;
-		a++;
-		b++;
-	}
-	return (n);
+	if (n < 0)
+		return (-n);
+	else
+		return (n);
 }

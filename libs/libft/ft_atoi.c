@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 13:55:46 by jfrancis          #+#    #+#             */
-/*   Updated: 2021/03/10 14:15:01 by jfrancis         ###   ########.fr       */
+/*   Updated: 2021/05/15 23:28:31 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	ft_atoi(const char *nptr)
 {
-	int s;
-	int res;
+	int	s;
+	int	res;
 
 	s = 1;
 	res = 0;

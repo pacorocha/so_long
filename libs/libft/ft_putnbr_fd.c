@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/21 12:39:09 by jfrancis          #+#    #+#             */
-/*   Updated: 2021/02/21 12:57:35 by jfrancis         ###   ########.fr       */
+/*   Updated: 2021/05/15 22:24:48 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	unsigned int i;
+	unsigned int	i;
 
 	if (n < 0)
 	{

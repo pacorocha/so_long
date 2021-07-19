@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/20 18:22:20 by jfrancis          #+#    #+#             */
-/*   Updated: 2021/02/25 18:12:26 by jfrancis         ###   ########.fr       */
+/*   Updated: 2021/05/15 23:57:32 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ static size_t	count_words(char const *s, char c)
 	return (wc);
 }
 
-int				ln(char *s, int i, char c)
+int	ln(char *s, int i, char c)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	while (s[i] != c && s[i])
@@ -54,16 +54,28 @@ int				ln(char *s, int i, char c)
 	return (count);
 }
 
-char			**ft_split(char const *s, char c)
+static void	cut_str(char const *s, char **s_array, int i, char c)
+{
+	int	j;
+	int	k;
+
+	j = 0;
+	k = 0;
+	while (s[i] != c && s[i])
+		s_array[j][k++] = s[i++];
+	s_array[j++][k] = '\0';
+}
+
+char	**ft_split(char const *s, char c)
 {
 	char	**s_array;
 	int		i;
 	int		j;
-	int		k;
 
 	i = 0;
 	j = 0;
-	if (!s || !(s_array = malloc(sizeof(char*) * (count_words(s, c) + 1))))
+	s_array = malloc(sizeof(char *) * (count_words(s, c) + 1));
+	if (!s || !s_array)
 		return (NULL);
 	while (s[i])
 	{
@@ -71,12 +83,10 @@ char			**ft_split(char const *s, char c)
 			i++;
 		if (s[i])
 		{
-			k = 0;
-			if (!(s_array[j] = malloc(sizeof(char) * ln((char *)s, i, c) + 1)))
+			s_array[j] = malloc(sizeof(char) * ln((char *)s, i, c) + 1);
+			if (!s_array[j])
 				return (NULL);
-			while (s[i] != c && s[i])
-				s_array[j][k++] = s[i++];
-			s_array[j++][k] = '\0';
+			cut_str(s, s_array, i, c);
 		}
 	}
 	s_array[j] = NULL;

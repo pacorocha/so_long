@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   num_size.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/16 12:13:09 by jfrancis          #+#    #+#             */
-/*   Updated: 2021/05/15 22:23:36 by jfrancis         ###   ########.fr       */
+/*   Created: 2021/03/19 19:08:59 by jfrancis          #+#    #+#             */
+/*   Updated: 2021/05/15 22:09:27 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+int	num_size(int n)
 {
-	unsigned char	*a;
-	unsigned char	*b;
+	int	size;
 
-	a = (unsigned char *)s1;
-	b = (unsigned char *)s2;
-	while (n > 0)
+	size = 0;
+	while (n != 0)
 	{
-		if (*a != *b)
-			return (*a - *b);
-		n--;
-		a++;
-		b++;
+		n /= 10;
+		size++;
 	}
-	return (n);
+	return (size);
 }

@@ -6,13 +6,13 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/18 21:13:33 by jfrancis          #+#    #+#             */
-/*   Updated: 2021/02/18 22:56:03 by jfrancis         ###   ########.fr       */
+/*   Updated: 2021/05/15 23:28:07 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strdup(const char *s)
+char	*ft_strdup(const char *s)
 {
 	size_t	size;
 	char	*dest;

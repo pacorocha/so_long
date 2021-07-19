@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_utoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/16 12:13:09 by jfrancis          #+#    #+#             */
-/*   Updated: 2021/05/15 22:23:36 by jfrancis         ###   ########.fr       */
+/*   Created: 2021/05/06 18:49:41 by jfrancis          #+#    #+#             */
+/*   Updated: 2021/05/15 22:25:16 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+char	*ft_utoa(unsigned int n)
 {
-	unsigned char	*a;
-	unsigned char	*b;
+	unsigned int	count;
+	unsigned int	num;
+	char			*temp;
 
-	a = (unsigned char *)s1;
-	b = (unsigned char *)s2;
-	while (n > 0)
+	count = 1;
+	num = n;
+	while (n >= 10 && count++)
+		n /= 10;
+	temp = malloc((count + 1) * sizeof(char));
+	if (!temp)
+		return (NULL);
+	*(temp + count) = '\0';
+	while (count--)
 	{
-		if (*a != *b)
-			return (*a - *b);
-		n--;
-		a++;
-		b++;
+		*(temp + count) = num % 10 + '0';
+		num /= 10;
 	}
-	return (n);
+	free(temp);
+	return (temp);
 }
