@@ -6,16 +6,19 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 21:41:09 by jfrancis          #+#    #+#             */
-/*   Updated: 2021/07/23 02:45:19 by user42           ###   ########.fr       */
+/*   Updated: 2021/08/05 00:55:17 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+# define BUFFER_SIZE 2048
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <limits.h>
 
+int			get_next_line(int fd, char **line);
 void		*ft_memset(void *b, int c, size_t n);
 void		ft_bzero(void *s, size_t n);
 void		*ft_memcpy(void *dest, const void *src, size_t n);
