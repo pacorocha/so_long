@@ -11,6 +11,9 @@ typedef struct	s_map {
 	int		height;
 	int		ln_nbr;
 	int		ln_len;
+	int		player;
+	int		collectibles;
+	int		exit;
 	char	*map_str;
 	char	*valid_chars;
 }				t_map;
