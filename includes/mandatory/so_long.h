@@ -34,8 +34,6 @@ typedef struct	s_data {
 }				t_data;
 
 int		close_window(t_my_mlx *my_mlx);
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-void	draw_square(t_data img, t_my_mlx *my_mlx);
 void	validate_lines(int l, char *line, t_data *my_data);
 void	print_green();
 void	print_yellow();
@@ -43,4 +41,5 @@ void	print_white();
 void	print_red ();
 void	print_error(int id_error);
 char	*check_error(int id_error);
+void	put_images(t_data *my_data);
 #endif

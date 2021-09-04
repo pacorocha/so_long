@@ -24,6 +24,7 @@ void	so_long(const char *filename, t_data *my_data)
 	char	*line;
 	char	*tmp_line;
 	int		l;
+	int		len;
 
 	validate_file(filename);
 	opened_map = open(filename, O_RDONLY);
@@ -40,6 +41,11 @@ void	so_long(const char *filename, t_data *my_data)
 			tmp_line = ft_strjoin(tmp_line, line);
 			l++;
 		}
+		len = ft_strlen(line);
+		if (len != my_data->line_length)
+			print_error(1);
+		else
+			tmp_line = ft_strjoin(tmp_line, line);
 		my_data->my_map.height = l * 32;
 		my_data->my_map.map_str = tmp_line;
 		close(opened_map);
@@ -52,16 +58,10 @@ int	main(void)
 	t_data		my_data;
 
 	so_long(filename, &my_data);
-	void	*img;
-	char	*relative_path = "./images/mush_tree.xpm";
-	int		img_width;
-	int		img_height;
+
 	my_data.my_mlx.mlx = mlx_init();
-	img_width = 32;
-	img_height = 32;
-	img = mlx_xpm_file_to_image(my_data.my_mlx.mlx, relative_path, &img_width, &img_height);
 	my_data.my_mlx.mlx_win = mlx_new_window(my_data.my_mlx.mlx, my_data.my_map.width, my_data.my_map.height, "So long");
-	mlx_put_image_to_window(my_data.my_mlx.mlx, my_data.my_mlx.mlx_win, img, 0, 0);
+	put_images(&my_data);
 	mlx_hook(my_data.my_mlx.mlx_win, 33, 1L << 17, close_window, &my_data.my_mlx);
 	mlx_loop(my_data.my_mlx.mlx);
 	free(&my_data);

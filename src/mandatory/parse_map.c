@@ -31,19 +31,19 @@ static void	parse_map_line(int len, char *line, t_data *my_data)
 
 void	validate_lines(int l, char *line, t_data *my_data)
 {
-	static int	ln_len;
 	int			len;
 
 	len = 0;
 	if (l == 1)
 	{
-		ln_len = ft_strlen(line);
-		my_data->my_map.width = ln_len * 32;
+		len = ft_strlen(line);
+		my_data->line_length = len;
+		my_data->my_map.width = len * 32;
 	}
 	if (l > 1)
 	{
 		len = ft_strlen(line);
-		if (len != ln_len)
+		if (len != my_data->line_length)
 			print_error(1);
 	}
 	parse_map_line(len, line, my_data);

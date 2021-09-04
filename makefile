@@ -15,9 +15,9 @@ PARSE_BONUS = $(SRC_BONUS)parse_scene/
 RENDER_BONUS = $(SRC_BONUS)render_cub/
 SYSTEM_BONUS = $(SRC_BONUS)system/
 
-FILES = $(SRC)solong.c $(SRC)handle_window.c $(SRC)draw.c $(SRC)parse_map.c \
+FILES = $(SRC)solong.c $(SRC)handle_window.c $(SRC)generate_screen.c $(SRC)parse_map.c \
 $(SRC)color_text.c $(SRC)error_messages.c
-OBJECTS = solong.o handle_window.o draw.o parse_map.o color_text.o \
+OBJECTS = solong.o handle_window.o generate_screen.o parse_map.o color_text.o \
 	error_messages.o
 
 CC = clang
