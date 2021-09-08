@@ -38,7 +38,7 @@ $(NAME): $(OBJECTS) $(LIBFT) $(MLX)
 	@sleep 1
 	@echo -ne 'making so long: ##########################(100%)\r'
 	@echo -ne '\n'
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJECTS) -L $(LIBFT_PATH) -L $(MLX_PATH) -lft $(MLX_FLAGS)
+	@$(CC) $(CFLAGS) -g -o $(NAME) $(OBJECTS) -L $(LIBFT_PATH) -L $(MLX_PATH) -lft $(MLX_FLAGS)
 	@echo done!
 
 bonus: $(BONUS_OBJECTS) $(LIBFT) $(MLX)

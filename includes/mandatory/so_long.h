@@ -16,6 +16,7 @@ typedef struct	s_map {
 	int		exit;
 	char	*map_str;
 	char	*valid_chars;
+	char	*img_path;
 }				t_map;
 
 typedef struct s_my_mlx {
@@ -25,8 +26,8 @@ typedef struct s_my_mlx {
 
 typedef struct	s_data {
 	void		*img;
-	char		*addr;
-	int			bits_per_pixel;
+	int			*addr;
+	int			bpp;
 	int			line_length;
 	int			endian;
 	t_map		my_map;
@@ -41,5 +42,5 @@ void	print_white();
 void	print_red ();
 void	print_error(int id_error);
 char	*check_error(int id_error);
-void	put_images(t_data *my_data);
+int		draw_map(t_data *my_data);
 #endif

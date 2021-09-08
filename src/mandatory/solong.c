@@ -61,8 +61,8 @@ int	main(void)
 
 	my_data.my_mlx.mlx = mlx_init();
 	my_data.my_mlx.mlx_win = mlx_new_window(my_data.my_mlx.mlx, my_data.my_map.width, my_data.my_map.height, "So long");
-	put_images(&my_data);
 	mlx_hook(my_data.my_mlx.mlx_win, 33, 1L << 17, close_window, &my_data.my_mlx);
+	mlx_loop_hook(my_data.my_mlx.mlx, &draw_map, &my_data);
 	mlx_loop(my_data.my_mlx.mlx);
 	free(&my_data);
 }
