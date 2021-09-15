@@ -9,9 +9,9 @@
 typedef struct	s_map {
 	int		width;
 	int		height;
-	int		ln_nbr;
-	int		ln_len;
 	int		player;
+	int		player_x;
+	int		player_y;
 	int		collectibles;
 	int		exit;
 	char	*map_str;
