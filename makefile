@@ -16,9 +16,9 @@ RENDER_BONUS = $(SRC_BONUS)render_cub/
 SYSTEM_BONUS = $(SRC_BONUS)system/
 
 FILES = $(SRC)solong.c $(SRC)key_functions.c $(SRC)generate_screen.c \
-$(SRC)parse_map.c $(SRC)color_text.c $(SRC)error_messages.c
+$(SRC)parse_map.c $(SRC)color_text.c $(SRC)error_messages.c $(SRC)map_utils.c
 OBJECTS = solong.o key_functions.o generate_screen.o parse_map.o color_text.o \
-	error_messages.o
+	error_messages.o map_utils.o
 
 CC = clang
 CFLAGS = -Wall -Wextra -Werror
