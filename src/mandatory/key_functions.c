@@ -6,30 +6,62 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 01:46:44 by jfrancis          #+#    #+#             */
-/*   Updated: 2021/09/19 23:38:22 by jfrancis         ###   ########.fr       */
+/*   Updated: 2021/09/22 03:09:57 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/mandatory/so_long.h"
 
-int	close_window(t_my_mlx *my_mlx)
+int		close_window(t_data *my_data)
 {
-	mlx_destroy_window(my_mlx->mlx, my_mlx->mlx_win);
+	mlx_destroy_window(my_data->game.mlx, my_data->game.mlx_win);
 	exit(0);
 	return (0);
 }
 
-int key_press(int key_code, t_data *my_data)
+void	move_player(int prev_pos, int next_pos, t_data *my_data)
 {
-	int y;
-	int x;
+	my_data->map.player_pos = next_pos;
+	my_data->map.map_str[prev_pos] = '0';
+	my_data->map.map_str[next_pos] = 'P';
+	printf("moves: %i\n", my_data->moves);
+}
 
-	y = my_data->map.width / 32;
-	x = my_data->map.height / 32;
-
+int		key_press(int key_code, t_data *my_data)
+{
+	int prev_pos;
+	int next_pos;
+	int dest_pos = 0;
+	
+	prev_pos = my_data->map.player_pos;
+	next_pos = my_data->map.player_pos;
 	if (key_code == KEY_ESCAPE || key_code == KEY_ABNT_Q)
-		close_window(&my_data->game);
+		close_window(my_data);
 	if (key_code == KEY_ABNT_W)
-		my_data->map.player_y = my_data->map.player_y - 32;
+		dest_pos = my_data->map.player_pos - my_data->line_length;
+	if (key_code == KEY_ABNT_S)
+		dest_pos = my_data->map.player_pos + my_data->line_length;
+	if (key_code == KEY_ABNT_A)
+		dest_pos = my_data->map.player_pos - 1;
+	if (key_code == KEY_ABNT_D)
+		dest_pos = my_data->map.player_pos + 1;
+	if (my_data->map.map_str[dest_pos] == 'E' && my_data->map.collectibles == 0)
+	{
+		printf("you win!");
+		my_data->moves++;
+		next_pos = dest_pos;
+		close_window(my_data);
+	}	
+	else
+		next_pos = prev_pos;
+	if (my_data->map.map_str[dest_pos] != '1' && my_data->map.map_str[dest_pos] != 'E')
+	{
+		if (my_data->map.map_str[dest_pos] == 'C')
+			my_data->map.collectibles--;
+		next_pos = dest_pos;
+		my_data->moves++;
+	}
+	move_player(prev_pos, next_pos, my_data);
+	render_map(my_data);
 	return (1);
 }

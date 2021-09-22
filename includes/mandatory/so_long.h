@@ -1,6 +1,13 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
+
 # define BLOCK_SIZE 32
+# define HERO_IMG "images/hero.xpm"
+# define GROUND_IMG "images/ground.xpm"
+# define COLLECTIBLE_IMG "images/sheep.xpm"
+# define WALL_IMG "images/mush_tree.xpm"
+# define EXIT_IMG "images/exit.xpm"
+
 # define KEY_ABNT_Q (0x71)
 # define KEY_ABNT_A (0x61)
 # define KEY_ABNT_S (0x73)
@@ -24,8 +31,6 @@ typedef struct	s_map {
 	int		height;
 	int		player;
 	int		player_pos;
-	int		player_x;
-	int		player_y;
 	int		collectibles;
 	int		exit;
 	char	*map_str;
@@ -34,8 +39,8 @@ typedef struct	s_map {
 }				t_map;
 
 typedef struct s_my_mlx {
-	void *mlx;
-	void *mlx_win;
+	void	*mlx;
+	void	*mlx_win;
 }				t_my_mlx;
 
 typedef struct	s_data {
@@ -44,12 +49,12 @@ typedef struct	s_data {
 	int			bpp;
 	int			line_length;
 	int			endian;
-	int			start;
+	int			moves;
 	t_map		map;
 	t_my_mlx	game;
 }				t_data;
 
-int		close_window(t_my_mlx *my_mlx);
+int		close_window(t_data *my_data);
 int		key_press(int key_code, t_data *my_data);
 void	validate_lines(int l, char *line, t_data *my_data);
 void	print_green();
@@ -58,6 +63,7 @@ void	print_white();
 void	print_red ();
 void	print_error(int id_error);
 char	*check_error(int id_error);
-int		start_map(t_data *my_data);
+int		render_map(t_data *my_data);
 void	draw_square(t_data *my_data, int x, int y);
+void	player_position(t_data *my_data, int i);
 #endif

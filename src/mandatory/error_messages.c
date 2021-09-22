@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 01:36:56 by jfrancis          #+#    #+#             */
-/*   Updated: 2021/09/09 01:36:58 by jfrancis         ###   ########.fr       */
+/*   Updated: 2021/09/21 03:01:21 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,9 @@ char	*check_error(int id_error)
 		error_msg = "map is not closed.";
 	if (id_error == 4)
 		error_msg = "there must be just one player.";
+	if (id_error == 5)
+		error_msg = "map file missing.";
+	if (id_error == 6)
+		error_msg = "too many arguments.";	
 	return (error_msg);
 }
