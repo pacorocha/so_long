@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 01:48:41 by jfrancis          #+#    #+#             */
-/*   Updated: 2021/09/24 00:12:42 by jfrancis         ###   ########.fr       */
+/*   Updated: 2021/09/24 01:28:58 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ int	main(int argc, char **argv)
 	mlx_hook(my_data.game.mlx_win, 33, 1L << 17, close_window, &my_data);
 	mlx_key_hook(my_data.game.mlx_win, &key_press, &my_data);
 	render_map(&my_data);
+	mlx_expose_hook(my_data.game.mlx_win, &render_map, &my_data);
 	mlx_loop(my_data.game.mlx);
 	free(&my_data);
 }

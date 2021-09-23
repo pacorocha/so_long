@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 01:46:44 by jfrancis          #+#    #+#             */
-/*   Updated: 2021/09/24 00:42:44 by jfrancis         ###   ########.fr       */
+/*   Updated: 2021/09/24 01:04:29 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	close_window(t_data *my_data)
 	mlx_destroy_display(my_data->game.mlx);
 	free(my_data->map.map_str);
 	free(my_data->game.mlx);
-	printf("estou aqui\n");
 	exit(0);
 	return (0);
 }

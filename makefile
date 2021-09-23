@@ -10,11 +10,6 @@ PARSE = $(SRC)parse_scene/
 RENDER = $(SRC)render_cub/
 SYSTEM = $(SRC)system/
 
-SRC_BONUS = ./src/bonus/
-PARSE_BONUS = $(SRC_BONUS)parse_scene/
-RENDER_BONUS = $(SRC_BONUS)render_cub/
-SYSTEM_BONUS = $(SRC_BONUS)system/
-
 FILES = $(SRC)solong.c $(SRC)key_functions.c $(SRC)generate_screen.c \
 $(SRC)parse_map.c $(SRC)color_text.c $(SRC)error_messages.c $(SRC)map_utils.c
 OBJECTS = solong.o key_functions.o generate_screen.o parse_map.o color_text.o \
@@ -41,11 +36,6 @@ $(NAME): $(OBJECTS) $(LIBFT) $(MLX)
 	@$(CC) $(CFLAGS) -g -o $(NAME) $(OBJECTS) -L $(LIBFT_PATH) -L $(MLX_PATH) -lft $(MLX_FLAGS)
 	@echo done!
 
-bonus: $(BONUS_OBJECTS) $(LIBFT) $(MLX)
-	@echo making so long
-	@$(CC) $(CFLAGS) -g -o solong $(BONUS_OBJECTS) -L $(LIBFT_PATH) -L $(MLX_PATH) -lft $(MLX_FLAGS)
-	@echo done!
-
 $(MLX):
 	@echo making minilibx....
 	@echo -----------------------------------------
@@ -60,9 +50,6 @@ $(LIBFT):
 
 $(OBJECTS): $(FILES)
 	@$(CC) $(CFLAGS) -g -c $(FILES)
-
-$(BONUS_OBJECTS): $(BONUS_FILES)
-	@$(CC) $(CFLAGS) -g -c $(BONUS_FILES)
 
 clean:
 	@make --no-print-directory -C $(LIBFT_PATH) fclean
