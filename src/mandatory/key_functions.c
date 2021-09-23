@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 01:46:44 by jfrancis          #+#    #+#             */
-/*   Updated: 2021/09/23 19:18:42 by jfrancis         ###   ########.fr       */
+/*   Updated: 2021/09/24 00:42:44 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,20 @@ int	define_key(int key_code, int dest_pos, t_data *my_data)
 	return (dest_pos);
 }
 
+int	activate_exit(int dest_pos, int next_pos, int prev_pos, t_data *my_data)
+{
+	if (my_data->map.map_str[dest_pos] == 'E' && my_data->map.collectibles == 0)
+	{
+		printf("you win!");
+		my_data->moves++;
+		next_pos = dest_pos;
+		close_window(my_data);
+	}	
+	else
+		next_pos = prev_pos;
+	return (next_pos);
+}
+
 int	key_press(int key_code, t_data *my_data)
 {
 	int	prev_pos;
@@ -56,16 +70,9 @@ int	key_press(int key_code, t_data *my_data)
 	prev_pos = my_data->map.player_pos;
 	next_pos = my_data->map.player_pos;
 	dest_pos = define_key(key_code, dest_pos, my_data);
-	if (my_data->map.map_str[dest_pos] == 'E' && my_data->map.collectibles == 0)
-	{
-		printf("you win!");
-		my_data->moves++;
-		next_pos = dest_pos;
-		close_window(my_data);
-	}	
-	else
-		next_pos = prev_pos;
-	if (my_data->map.map_str[dest_pos] != '1' && my_data->map.map_str[dest_pos] != 'E')
+	next_pos = activate_exit(dest_pos, next_pos, prev_pos, my_data);
+	if (my_data->map.map_str[dest_pos] != '1'
+		&& my_data->map.map_str[dest_pos] != 'E')
 	{
 		if (my_data->map.map_str[dest_pos] == 'C')
 			my_data->map.collectibles--;

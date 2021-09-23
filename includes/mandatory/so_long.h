@@ -57,6 +57,8 @@ typedef struct	s_data {
 int		close_window(t_data *my_data);
 int		key_press(int key_code, t_data *my_data);
 void	validate_lines(int l, char *line, t_data *my_data);
+void	append_line(char **tmp_line, char *line);
+void	generate_map(int map_file, t_data *my_data);
 void	print_green();
 void	print_yellow();
 void	print_white();
