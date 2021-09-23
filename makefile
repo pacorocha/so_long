@@ -21,7 +21,7 @@ OBJECTS = solong.o key_functions.o generate_screen.o parse_map.o color_text.o \
 	error_messages.o map_utils.o
 
 CC = clang
-CFLAGS = -Wall -Wextra -Werror -fsanitize=leak
+CFLAGS = -Wall -Wextra -Werror
 MLX_FLAGS = -lm -lbsd -lmlx -lXext -lX11
 RE = rm -f
 

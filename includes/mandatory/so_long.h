@@ -64,6 +64,7 @@ void	print_red ();
 void	print_error(int id_error);
 char	*check_error(int id_error);
 int		render_map(t_data *my_data);
+void	define_image(char c, t_data *my_data);
 void	draw_square(t_data *my_data, int x, int y);
 void	player_position(t_data *my_data, int i);
 #endif
