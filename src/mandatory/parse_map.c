@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 01:28:14 by jfrancis          #+#    #+#             */
-/*   Updated: 2021/09/25 03:32:30 by jfrancis         ###   ########.fr       */
+/*   Updated: 2021/09/25 04:07:13 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ static void	check_elements(char *line, t_data *my_data)
 		free(line);
 		print_error(4);
 	}
+	else
+		my_data->map.map_str = line;
 }
 
 void	generate_map(int map_file, t_data *my_data)
@@ -49,5 +51,4 @@ void	generate_map(int map_file, t_data *my_data)
 	}
 	check_elements(tmp_line, my_data);
 	my_data->map.height = l * 32;
-	my_data->map.map_str = tmp_line;
 }

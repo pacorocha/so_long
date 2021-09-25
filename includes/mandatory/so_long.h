@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/25 04:12:15 by jfrancis          #+#    #+#             */
+/*   Updated: 2021/09/25 04:12:17 by jfrancis         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
@@ -19,14 +31,14 @@
 # include "../../libs/minilibx-linux/mlx.h"
 # include "../../libs/minilibx-linux/mlx_int.h"
 
-typedef struct	s_square {
+typedef struct s_square {
 	int		id;
 	int		x;
 	int		y;
 	char	c;
 }				t_square;
 
-typedef struct	s_map {
+typedef struct s_map {
 	int		width;
 	int		height;
 	int		player;
@@ -43,7 +55,7 @@ typedef struct s_my_mlx {
 	void	*mlx_win;
 }				t_my_mlx;
 
-typedef struct	s_data {
+typedef struct s_data {
 	void		*img;
 	int			*addr;
 	int			bpp;
@@ -60,10 +72,10 @@ void	validate_lines(int l, char *line, t_data *my_data);
 void	validate_last_line(int len, char *line);
 void	append_line(char **tmp_line, char *line);
 void	generate_map(int map_file, t_data *my_data);
-void	print_green();
-void	print_yellow();
-void	print_white();
-void	print_red ();
+void	print_green(void);
+void	print_yellow(void);
+void	print_white(void);
+void	print_red(void);
 void	print_error(int id_error);
 char	*check_error(int id_error);
 int		render_map(t_data *my_data);
