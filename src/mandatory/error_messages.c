@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 01:36:56 by jfrancis          #+#    #+#             */
-/*   Updated: 2021/09/23 00:16:22 by jfrancis         ###   ########.fr       */
+/*   Updated: 2021/09/25 03:34:01 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	print_error(int id_error)
 
 	print_red();
 	error_msg = check_error(id_error);
-	printf("Error:\n%s", error_msg);
+	printf("Error:\n%s\n", error_msg);
 	exit(EXIT_FAILURE);
 }
 
@@ -36,7 +36,7 @@ char	*check_error(int id_error)
 	if (id_error == 3)
 		error_msg = "map is not closed.";
 	if (id_error == 4)
-		error_msg = "there must be just one player.";
+		error_msg = "some elements are missing.";
 	if (id_error == 5)
 		error_msg = "map file missing.";
 	if (id_error == 6)

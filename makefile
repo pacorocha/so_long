@@ -1,4 +1,4 @@
-NAME = solong
+NAME = so_long
 LIBFT = libft.a
 MLX = libmlx.a
 
@@ -6,14 +6,12 @@ LIBFT_PATH = ./libs/libft/
 MLX_PATH = ./libs/minilibx-linux/
 
 SRC = ./src/mandatory/
-PARSE = $(SRC)parse_scene/
-RENDER = $(SRC)render_cub/
-SYSTEM = $(SRC)system/
 
 FILES = $(SRC)solong.c $(SRC)key_functions.c $(SRC)generate_screen.c \
-$(SRC)parse_map.c $(SRC)color_text.c $(SRC)error_messages.c $(SRC)map_utils.c
+$(SRC)parse_map.c $(SRC)color_text.c $(SRC)error_messages.c $(SRC)map_utils.c \
+$(SRC)map_read.c
 OBJECTS = solong.o key_functions.o generate_screen.o parse_map.o color_text.o \
-	error_messages.o map_utils.o
+	error_messages.o map_utils.o map_read.o
 
 CC = clang
 CFLAGS = -Wall -Wextra -Werror
@@ -22,45 +20,24 @@ RE = rm -f
 
 all: $(NAME)
 
-$(NAME): $(OBJECTS) $(LIBFT) $(MLX)
-	@echo -ne 'making so long: ####                      (16%)\r'
-	@sleep 1
-	@echo -ne 'making so long: ########                  (33%)\r'
-	@sleep 1
-	@echo -ne 'making so long: #############             (66%)\r'
-	@sleep 1
-	@echo -ne 'making so long: ###################       (78%)\r'
-	@sleep 1
-	@echo -ne 'making so long: ##########################(100%)\r'
-	@echo -ne '\n'
-	@$(CC) $(CFLAGS) -g -o $(NAME) $(OBJECTS) -L $(LIBFT_PATH) -L $(MLX_PATH) -lft $(MLX_FLAGS)
-	@echo done!
-
-$(MLX):
-	@echo making minilibx....
-	@echo -----------------------------------------
-	@make --no-print-directory -C $(MLX_PATH)
-	@echo -----------------------------------------
-	@echo done!
-
-$(LIBFT):
-	@echo making libft....
-	@make --no-print-directory -C $(LIBFT_PATH) $(LIBFT)
-	@echo done!
+$(NAME): $(OBJECTS)
+	make --no-print-directory -C $(MLX_PATH)
+	make --no-print-directory -C $(LIBFT_PATH) $(LIBFT)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJECTS) -L $(LIBFT_PATH) -L $(MLX_PATH) -lft $(MLX_FLAGS)
 
 $(OBJECTS): $(FILES)
-	@$(CC) $(CFLAGS) -g -c $(FILES)
+	$(CC) $(CFLAGS) -g -c $(FILES)
 
 clean:
-	@make --no-print-directory -C $(LIBFT_PATH) fclean
-	@make --no-print-directory -C $(MLX_PATH) clean
-	$(RM) $(OBJECTS) $(BONUS_OBJECTS)
+	make --no-print-directory -C $(LIBFT_PATH) fclean
+	make --no-print-directory -C $(MLX_PATH) clean
+	$(RM) $(OBJECTS)
 
 fclean: clean
-	@echo cleaning!
-	@make --no-print-directory -C $(LIBFT_PATH) fclean
+	echo cleaning!
+	make --no-print-directory -C $(LIBFT_PATH) fclean
 	$(RM) $(NAME)
-	@echo done!
+	echo done!
 	
 re: fclean all 
 

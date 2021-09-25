@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 23:24:31 by jfrancis          #+#    #+#             */
-/*   Updated: 2021/08/05 00:53:28 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/25 00:42:29 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		ft_readbuffer(int fd, char *temp_read, char **string_static,
+static int	ft_readbuffer(int fd, char *temp_read, char **string_static,
 				int *n)
 {
-	char *tmp_string;
+	char	*tmp_string;
 
 	while (*n > 0)
 	{
@@ -41,7 +41,7 @@ static int		ft_readbuffer(int fd, char *temp_read, char **string_static,
 	return (1);
 }
 
-static char		*str_joint(char *string_static, char **line)
+static char	*str_joint(char *string_static, char **line)
 {
 	size_t	i;
 	char	*tmp;
@@ -64,7 +64,7 @@ static char		*str_joint(char *string_static, char **line)
 	return (tmp);
 }
 
-int				get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line)
 {
 	char		*temp_read;
 	static char	*string_static;
@@ -73,7 +73,8 @@ int				get_next_line(int fd, char **line)
 	n = 1;
 	if (fd < 0 || !line || BUFFER_SIZE <= 0)
 		return (-1);
-	if (!(temp_read = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char))))
+	temp_read = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
+	if (!temp_read)
 		return (-1);
 	if (!(ft_readbuffer(fd, temp_read, &string_static, &n)))
 		return (-1);
