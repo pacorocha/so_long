@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 01:36:56 by jfrancis          #+#    #+#             */
-/*   Updated: 2021/09/25 03:34:01 by jfrancis         ###   ########.fr       */
+/*   Updated: 2021/09/26 16:47:17 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,7 @@ char	*check_error(int id_error)
 		error_msg = "map file missing.";
 	if (id_error == 6)
 		error_msg = "too many arguments.";
+	if (id_error == 7)
+		error_msg = "file not found.";
 	return (error_msg);
 }

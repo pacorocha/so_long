@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 01:48:41 by jfrancis          #+#    #+#             */
-/*   Updated: 2021/09/24 01:28:58 by jfrancis         ###   ########.fr       */
+/*   Updated: 2021/09/26 16:47:29 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static void	check_file_ext(const char *filename)
 	char	*ext;
 
 	ext = strrchr(filename, '.');
+	if (!ext)
+		print_error(0);
 	if (ft_strncmp(ext + 1, "ber", 3) != 0)
 		print_error(0);
 }
@@ -47,7 +49,7 @@ void	validate_map(const char *filename, t_data *my_data)
 	check_file_ext(filename);
 	opened_map = open(filename, O_RDONLY);
 	if (opened_map < 0)
-		perror("Error");
+		print_error(7);
 	else
 	{
 		init_params(my_data);
